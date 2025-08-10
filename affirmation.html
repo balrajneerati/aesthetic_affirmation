@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthetic Affirmation Machine ✨</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            overflow: hidden;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .overlay {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        .emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatUp 10s linear infinite;
+        }
+        @keyframes floatUp {
+            from { transform: translateY(100vh) rotate(0deg); }
+            to { transform: translateY(-10vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1 id="affirmation">Click the button for good vibes ✨</h1>
+        <button onclick="newAffirmation()">🌸 New Affirmation 🌸</button>
+    </div>
+    <script>
+        const affirmations = [
+            "You got this, but maybe drink some water first 💧",
+            "You are basically a legend ✨",
+            "Your vibe is immaculate today 🌈",
+            "The universe is proud of you 🌌",
+            "You're doing amazing, sweetie 💖",
+            "Go forth and slay, drama-free 🕊️",
+            "Today is your runway, strut accordingly 👠"
+        ];
+        function newAffirmation() {
+            const randomIndex = Math.floor(Math.random() * affirmations.length);
+            document.getElementById("affirmation").textContent = affirmations[randomIndex];
+            spawnEmoji();
+        }
+        function spawnEmoji() {
+            const emojis = ["🌸", "🌈", "💖", "✨", "☀️", "🌻"];
+            const emoji = document.createElement("div");
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.classList.add("emoji");
+            emoji.style.left = Math.random() * 100 + "vw";
+            emoji.style.animationDuration = (5 + Math.random() * 5) + "s";
+            document.body.appendChild(emoji);
+            setTimeout(() => { emoji.remove(); }, 10000);
+        }
+    </script>
+</body>
+</html>
